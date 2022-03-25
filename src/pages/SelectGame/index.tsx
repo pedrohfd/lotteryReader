@@ -1,6 +1,5 @@
 import React from 'react'
 import { Button } from '../../components/Button'
-import { Header } from '../../components/Header'
 import { ButtonList, Container } from './styles'
 
 export function SelectGame() {
@@ -18,8 +17,6 @@ export function SelectGame() {
 
   return (
     <Container>
-      <Header />
-
       <ButtonList
         data={data}
         keyExtractor={(item: string) => item}

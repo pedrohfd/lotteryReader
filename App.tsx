@@ -10,6 +10,7 @@ import {
 
 import Routes from './src/routes/Routes'
 import theme from './src/global/theme'
+import { NavigationContainer } from '@react-navigation/native'
 
 export default function App() {
   let [fontsLoaded] = useFonts({
@@ -22,9 +23,11 @@ export default function App() {
   }
 
   return (
-    <ThemeProvider theme={theme}>
-      <StatusBar style='light' />
-      <Routes />
-    </ThemeProvider>
+    <NavigationContainer>
+      <ThemeProvider theme={theme}>
+        <StatusBar style='light' />
+        <Routes />
+      </ThemeProvider>
+    </NavigationContainer>
   )
 }

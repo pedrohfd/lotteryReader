@@ -1,20 +1,39 @@
 import React from 'react'
 
-import { NavigationContainer } from '@react-navigation/native'
-import { createNativeStackNavigator } from '@react-navigation/native-stack'
+import { NavigationContainer, useNavigation } from '@react-navigation/native'
+import { createStackNavigator, TransitionPresets } from '@react-navigation/stack'
+import Arrow from '../assets/icons/arrow-left.svg'
+import theme from '../global/theme'
 
 import { Home } from '../pages/Home'
 import { SelectGame } from '../pages/SelectGame'
 
-const Stack = createNativeStackNavigator()
+const Stack = createStackNavigator()
+
 
 export default function Routes() {
+  const navigation = useNavigation()
+
   return (
-    <NavigationContainer>
-      <Stack.Navigator screenOptions={{ headerShown: false }}>
-        <Stack.Screen name='Home' component={Home} />
+      <Stack.Navigator
+        screenOptions={{
+          ...TransitionPresets.SlideFromRightIOS,
+          headerTitleAlign: 'center',
+          headerStyle: {
+            backgroundColor: theme.colors.dark_500,
+          },
+          headerShadowVisible: false,
+          title: 'Loteria',
+
+          headerTitleStyle: {
+            color: theme.colors.orange_500,
+            fontFamily: theme.fonts.bold,
+            fontSize: 32,
+          },
+          headerLeft: () => <Arrow style={{ paddingLeft: 50 }} onPress={() => navigation.goBack()} />,
+      }}>
+        <Stack.Screen name='Home' component={Home} options={{headerShown: false}} />
         <Stack.Screen name='SelectGame' component={SelectGame} />
       </Stack.Navigator>
-    </NavigationContainer>
   )
 }
