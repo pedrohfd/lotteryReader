@@ -1,33 +1,5 @@
-import React from 'react'
-import AppLoading from 'expo-app-loading'
-import { StatusBar } from 'expo-status-bar'
-import { ThemeProvider } from 'styled-components/native'
-import {
-  useFonts,
-  Raleway_600SemiBold,
-  Raleway_700Bold,
-} from '@expo-google-fonts/raleway'
+import 'react-native-gesture-handler'
 
-import Routes from './src/routes/Routes'
-import theme from './src/global/theme'
-import { NavigationContainer } from '@react-navigation/native'
+import App from './src'
 
-export default function App() {
-  let [fontsLoaded] = useFonts({
-    Raleway_600SemiBold,
-    Raleway_700Bold,
-  })
-
-  if (!fontsLoaded) {
-    return <AppLoading />
-  }
-
-  return (
-    <NavigationContainer>
-      <ThemeProvider theme={theme}>
-        <StatusBar style='light' />
-        <Routes />
-      </ThemeProvider>
-    </NavigationContainer>
-  )
-}
+export default App
